@@ -6,7 +6,6 @@ cur = db.cursor(MySQLdb.cursors.DictCursor)
 sql = "UPDATE students SET gradeLevel='12' WHERE id=3"
 #Cursor executing sql code
 cur.execute(sql)
-
 #Disconnecting cursor and database
 cur.close()
 db.close()
