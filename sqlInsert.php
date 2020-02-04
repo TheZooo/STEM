@@ -10,9 +10,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-// Show Data
-$sql = "SELECT * FROM students";
-$result = $conn->query($sql);
+// Insert Data
+$sql = "INSERT INTO students (name, age, gradeLevel) VALUES ('Eric', '11', '16')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 
 $conn->close();
 ?> 
