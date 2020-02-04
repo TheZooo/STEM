@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 // Update Data
-$sql = "UPDATE students SET gradeLevel='Doe' WHERE id=2";
+$sql = "UPDATE students SET gradeLevel='12' WHERE id=2";
 
 if ($conn->query($sql) === TRUE) {
     echo "Record updated successfully";
