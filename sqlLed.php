@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<script>
-      //1st php updates LED state
+			//1st php updates LED state
 			<?php
 				//server and database info
 				$catch = $_REQUEST["turnOnOff"];
@@ -45,7 +45,7 @@
 				$sql = "SELECT switchLight FROM lightState";
 				if ($result = $conn->query($sql)) {
 					while ($row = $result -> fetch_row()) {
-						echo "var statea = ".$row[0];
+						echo "var statea = ".$row[0].";";
 					}
 					$result->free_result();
 				}
@@ -57,9 +57,11 @@
 				var xmlhttp = new XMLHttpRequest();
 				if (statea == 0) {
 					statea = 1;
+					document.getElementById("status").innerHTML = "The LED is On";
 				}
 				else if (statea == 1) {
 					statea = 0;
+					document.getElementById("status").innerHTML = "The LED is Off";
 				}
 				//Sends a XMLRequest to this page to 
 				xmlhttp.open("GET", "buttonLED.php?turnOnOff=" + statea, true);
@@ -69,5 +71,6 @@
 	</head>
 	<body>
 		<button onclick="switchLED()">Turn LED On/Off</button>
+		<h1 id="status">The LED is Off</h1>
 	</body>
 </html>
