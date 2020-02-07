@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "erizho21";
-$password = "zhou";
-$dbname = "erizho21";
+$password = "password";
+$dbname = "school";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 // Insert Data
-$sql = "INSERT INTO students (name, age, gradeLevel) VALUES ('Eric', '11', '16')";
+$sql = "INSERT INTO students (name, age, gradeLevel) VALUES ('Eric', '16', '11')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
