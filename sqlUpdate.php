@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "erizho21";
-$password = "zhou";
-$dbname = "erizho21";
+$password = "password";
+$dbname = "school";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -11,7 +11,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 // Update Data
-$sql = "UPDATE students SET gradeLevel='12' WHERE id=2";
+$sql = "UPDATE students SET gradeLevel='12' WHERE id=1";
 
 if ($conn->query($sql) === TRUE) {
     echo "Record updated successfully";
