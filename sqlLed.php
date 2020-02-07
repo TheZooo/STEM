@@ -3,23 +3,23 @@
 		<script>
 			//1st php updates LED state
 			<?php
-				//server and database info
+				//Catches an xmlrequest
 				$catch = $_REQUEST["turnOnOff"];
+				//Usual mysql info
 				$servername = "localhost";
 				$username = "piControl";
 				$password = "f103";
 				$dbname = "piLight";
 				
-				//creating the connection
+				//Connect to mysql
 				$conn = new mysqli($servername, $username, $password, $dbname);
 				if ($conn->connect_error) {
 					die("Connection failed: ".$conn->connect_error);
 				}
-				//if statea is 0, set switchLight to 0
+				//Checks catch, aka statea, and updates switchLight
 				if ($catch == 0) {
 					$sql = "UPDATE lightState SET switchLight=0";
 				}
-				//if statea is 1, set switchLight to 1
 				elseif ($catch == 1) {
 					$sql = "UPDATE lightState SET switchLight=1";
 				}
@@ -41,7 +41,7 @@
 				if ($conn->connect_error) {
 					die("Connection failed: ".$conn->connect_error);
 				}	
-				//get the switchLight value, set it to a "var statea = dbValue"
+				//Get the switchLight value, set it to a "var statea = dbValue"
 				$sql = "SELECT switchLight FROM lightState";
 				if ($result = $conn->query($sql)) {
 					while ($row = $result -> fetch_row()) {
@@ -52,7 +52,7 @@
 				$conn->close();
 			?>	
 			
-			//switches the LED state when button is pressed
+			//Switches the LED state when button is pressed
 			function switchLED() {
 				var xmlhttp = new XMLHttpRequest();
 				if (statea == 0) {
@@ -63,7 +63,7 @@
 					statea = 0;
 					document.getElementById("status").innerHTML = "The LED is Off";
 				}
-				//Sends a XMLRequest to this page to 
+				//Sends an XMLRequest to this page with statea
 				xmlhttp.open("GET", "buttonLED.php?turnOnOff=" + statea, true);
 				xmlhttp.send();
 			}
